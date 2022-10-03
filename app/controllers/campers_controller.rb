@@ -8,7 +8,7 @@ class CampersController < ApplicationController
     def show
         camper = Camper.find_by(id: params[:id])
         if camper
-            render json: camper, include: :activities, status: :ok
+            render json: camper, serializer: CamperWithActivitiesSerializer, status: :ok
         else
             render json: {error: "Camper not found"}, status: :not_found
         end
